@@ -5,7 +5,7 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./AvailableNow.css";
+
 
 const AvailableNow = () => {
   const [bikes, setBikes] = useState([]);
