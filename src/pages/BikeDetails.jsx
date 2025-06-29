@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import "./BikeDetails.css";
 
 const BikeDetails = () => {
   const { id } = useParams();
@@ -49,6 +50,13 @@ const BikeDetails = () => {
   return (
     <section className="bike-details-section py-5" style={{ backgroundColor: "var(--silver)" }}>
       <Container>
+        <div className="back-button-container">
+          <Link to="/">
+            <Button variant="primary" className="back-button font-montserrat">
+              Back to Home
+            </Button>
+          </Link>
+        </div>
         <h2 className="font-montserrat fw-bold mb-5 text-center" style={{ color: "var(--navy)" }}>
           {bike.name}
         </h2>
@@ -63,7 +71,7 @@ const BikeDetails = () => {
               />
               <Card.Body>
                 <Card.Title className="font-montserrat fw-bold" style={{ color: "var(--navy)" }}>
-                  {bike.model}
+                  <strong>Model:</strong> {bike.model}
                 </Card.Title>
                 <Card.Text className="font-inter" style={{ color: "var(--dark)" }}>
                   <strong>ID:</strong> {bike.id}
