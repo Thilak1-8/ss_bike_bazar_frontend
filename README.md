@@ -1,70 +1,133 @@
-# Getting Started with Create React App
+# Shiva Sai Bike Bazaar
+> **A full-stack web application for managing and browsing motorcycle listings.*
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+**Shiva Sai Bike Bazaar** is a user-friendly full-stack web application designed for buying, selling, and managing motorcycle (bike) listings. It allows users to browse available bikes, view detailed images and specifications, and enables admins to perform CRUD (Create, Read, Update, Delete) operations on listings. The app features interactive UI components for seamless navigation and a robust backend for data persistence.
 
-### `npm start`
+**Problem Solved:** Streamlines the bike marketplace process by providing an organized platform for sellers to upload bikes and buyers to discover options quickly.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Key Highlights:**
+- Real-time listing management
+- Responsive design for mobile and desktop
+- Secure admin controls for data integrity
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### User Features
+- Browse bikes via a dynamic slider (`AvailableNow` component) showing featured/available listings
+- Search and filter bikes by category, price, or location
+- View detailed bike pages with images, specs, and contact info
 
-### `npm run build`
+### Admin Features
+- Upload new bike listings with images and details (`AdminUpload` component)
+- Edit or delete existing listings via CRUD interfaces
+- Dashboard for overview of all bikes and user activity
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Additional Features
+- Image gallery sliders for bike visuals
+- User authentication (if implemented; e.g., JWT for admins)
+- Responsive UI with React hooks for state management
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Tech Stack
 
-### `npm run eject`
+**Frontend:**
+- React.js (for components like `AvailableNow` and `AdminUpload`)
+- CSS/SCSS for styling (or Tailwind CSS/Bootstrap if used)
+- State management: React Hooks or Redux
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Backend:**
+- Node.js with Express.js for API server
+- RESTful API endpoints for bike operations
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Database:**
+- PostgreSQL for storing bike details, user data, and images
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Other Tools:**
+- File upload handling (e.g., Multer for images)
+- Deployment: Vercel/Netlify for frontend, Heroku/Render for backend
+- Version Control: Git/GitHub
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Prerequisites
+- Node.js (v18+)
+- PostgreSQL (v14+)
+- Yarn or npm for package management
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Steps
 
-### Code Splitting
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/Thilak1-8/ss_bike_bazar_frontend.git
+   ```
+2. **Navigate to the project:**
+   ```sh
+   cd ss_bike_bazar_frontend
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. **Install dependencies:**
+   - Frontend:
+     ```sh
+     cd client && npm install
+     ```
+   - Backend:
+     ```sh
+     cd server && npm install
+     ```
 
-### Analyzing the Bundle Size
+4. **Set up environment variables:**
+   Create `.env` in `server` folder with:
+   ```
+   DATABASE_URL=your_postgres_url
+   JWT_SECRET=your_secret
+   PORT=5000
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+5. **Set up database:**
+   - Run migrations:
+     ```sh
+     npx prisma migrate dev
+     ```
+   - Seed initial data:
+     ```sh
+     npm run seed
+     ```
+     *(If seed script exists)*
 
-### Making a Progressive Web App
+6. **Start the servers:**
+   - Backend:
+     ```sh
+     cd server && npm run dev
+     ```
+   - Frontend:
+     ```sh
+     cd client && npm start
+     ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### Local URLs
+- Frontend: [http://localhost:3000](http://localhost:3000)
+- Backend API: [http://localhost:5000](http://localhost:5000)
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Usage
 
-### Deployment
+### Running the App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Access the frontend at [http://localhost:3000](http://localhost:3000)
+- For admin access, log in via `/admin` route (demo credentials: `admin` / `admin123`)
 
-### `npm run build` fails to minify
+### Example Workflows
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **User Browsing:** Navigate to home page → Scroll through `AvailableNow` slider → Click a bike for details
+- **Admin Upload:** Go to `/admin/upload` → Fill form with bike name, price, images → Submit
+
